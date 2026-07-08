@@ -10,10 +10,6 @@ services:
       - "127.0.0.1:${MAGICMIRROR_PORT:-8088}:8080"
     environment:
       TZ: Europe/Berlin
-      AHA_MUNICIPALITY: ${AHA_MUNICIPALITY}
-      AHA_STREET: ${AHA_STREET}
-      AHA_HOUSE_NUMBER: ${AHA_HOUSE_NUMBER}
-      AHA_HOUSE_NUMBER_SUFFIX: ${AHA_HOUSE_NUMBER_SUFFIX:-}
     volumes:
       - ./config:/opt/magicmirror/config
       - ./modules:/opt/magicmirror/modules

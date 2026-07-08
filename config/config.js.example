@@ -19,19 +19,6 @@ let config = {
         showWeek: true,
       },
     },
-    {
-      module: "MMM-AhaAbfuhr",
-      position: "top_right",
-      config: {
-        municipality: process.env.AHA_MUNICIPALITY,
-        street: process.env.AHA_STREET,
-        houseNumber: process.env.AHA_HOUSE_NUMBER,
-        houseNumberSuffix: process.env.AHA_HOUSE_NUMBER_SUFFIX || "",
-        daysToShow: 21,
-        maxEntries: 8,
-        showAddress: false,
-      },
-    },
   ],
 };
 
