@@ -1,0 +1,7 @@
+.idea/
+.env
+config/basepath.js
+
+# Each MagicMirror module is maintained as its own Git repository.
+modules/*
+!modules/.gitkeep
