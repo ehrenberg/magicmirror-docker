@@ -6,21 +6,21 @@ modules. It does not contain or version any module. Every directory below
 
 ## Requirements
 
-- Docker Desktop with Docker Compose
+- Linux with Docker Engine and the Docker Compose plugin
 - Git
 
 ## Start
 
 Create the local MagicMirror configuration once:
 
-```powershell
-Copy-Item config/config.js.example config/config.js
+```bash
+cp config/config.js.example config/config.js
 ```
 
 `config/config.js` is intentionally ignored, so each developer can activate and
 configure local modules without adding them or private values to this repository.
 
-```powershell
+```bash
 docker compose up --build
 ```
 
@@ -33,23 +33,22 @@ in the background using `docker compose up --build --detach`.
 Port `8088` avoids common conflicts with other local development services. It
 can be changed for one invocation, for example:
 
-```powershell
-$env:MAGICMIRROR_PORT = 8090
-docker compose up --detach
+```bash
+MAGICMIRROR_PORT=8090 docker compose up --detach
 ```
 
 ## Add a module repository
 
 Create a new, separately versioned module:
 
-```powershell
-New-Item -ItemType Directory modules/MMM-MyModule
+```bash
+mkdir -p modules/MMM-MyModule
 git -C modules/MMM-MyModule init
 ```
 
 Alternatively, clone an existing repository directly into `modules/`:
 
-```powershell
+```bash
 git clone <repository-url> modules/<module-name>
 ```
 
@@ -66,13 +65,13 @@ Add the module to `config/config.js`, for example:
 Install a module's npm dependencies inside the same Linux environment in which
 MagicMirror runs:
 
-```powershell
+```bash
 docker compose exec -w /opt/magicmirror/modules/MMM-MyModule magicmirror npm install
 ```
 
 Run module-specific commands in the same way:
 
-```powershell
+```bash
 docker compose exec -w /opt/magicmirror/modules/MMM-MyModule magicmirror npm test
 ```
 
@@ -84,7 +83,7 @@ ignored by that module's own `.gitignore`.
 Change `MAGICMIRROR_VERSION` and, if required by that release, `NODE_VERSION` in
 `compose.yaml`, then rebuild:
 
-```powershell
+```bash
 docker compose build --no-cache
 docker compose up --detach
 ```
